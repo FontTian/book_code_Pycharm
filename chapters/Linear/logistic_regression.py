@@ -10,7 +10,8 @@
 """
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn import datasets, linear_model,cross_validation
+from sklearn import datasets, linear_model
+from sklearn.model_selection import train_test_split
 
 def load_data():
     '''
@@ -21,9 +22,9 @@ def load_data():
     iris=datasets.load_iris() # 使用 scikit-learn 自带的 iris 数据集
     X_train=iris.data
     y_train=iris.target
-    return cross_validation.train_test_split(X_train, y_train,test_size=0.25,
+    return train_test_split(X_train, y_train,test_size=0.25,
 		random_state=0,stratify=y_train)# 分层采样拆分成训练集和测试集，测试集大小为原始数据集大小的 1/4
-def test_LogisticRegression(*data):
+def LogisticRegression(*data):
     '''
     测试 LogisticRegression 的用法
 
@@ -35,7 +36,7 @@ def test_LogisticRegression(*data):
     regr.fit(X_train, y_train)
     print('Coefficients:%s, intercept %s'%(regr.coef_,regr.intercept_))
     print('Score: %.2f' % regr.score(X_test, y_test))
-def test_LogisticRegression_multinomial(*data):
+def LogisticRegression_multinomial(*data):
     '''
     测试 LogisticRegression 的预测性能随 multi_class 参数的影响
 
@@ -47,7 +48,7 @@ def test_LogisticRegression_multinomial(*data):
     regr.fit(X_train, y_train)
     print('Coefficients:%s, intercept %s'%(regr.coef_,regr.intercept_))
     print('Score: %.2f' % regr.score(X_test, y_test))
-def test_LogisticRegression_C(*data):
+def LogisticRegression_C(*data):
     '''
     测试 LogisticRegression 的预测性能随  C  参数的影响
 
@@ -73,6 +74,6 @@ def test_LogisticRegression_C(*data):
 
 if __name__=='__main__':
     X_train,X_test,y_train,y_test=load_data() # 加载用于分类的数据集
-    test_LogisticRegression(X_train,X_test,y_train,y_test) # 调用  test_LogisticRegression
-    # test_LogisticRegression_multinomial(X_train,X_test,y_train,y_test) # 调用  test_LogisticRegression_multinomial
-    # test_LogisticRegression_C(X_train,X_test,y_train,y_test) # 调用  test_LogisticRegression_C
+    LogisticRegression(X_train,X_test,y_train,y_test) # 调用  LogisticRegression
+    LogisticRegression_multinomial(X_train,X_test,y_train,y_test) # 调用  LogisticRegression_multinomial
+    LogisticRegression_C(X_train,X_test,y_train,y_test) # 调用  LogisticRegression_C
