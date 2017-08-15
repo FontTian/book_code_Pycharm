@@ -10,7 +10,8 @@
 """
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn import datasets, discriminant_analysis,cross_validation
+from sklearn import datasets, discriminant_analysis
+from sklearn.model_selection import train_test_split
 
 def load_data():
     '''
@@ -21,9 +22,9 @@ def load_data():
     iris=datasets.load_iris() # 使用 scikit-learn 自带的 iris 数据集
     X_train=iris.data
     y_train=iris.target
-    return cross_validation.train_test_split(X_train, y_train,test_size=0.25,
+    return train_test_split(X_train, y_train,test_size=0.25,
 		random_state=0,stratify=y_train)# 分层采样拆分成训练集和测试集，测试集大小为原始数据集大小的 1/4
-def test_LinearDiscriminantAnalysis(*data):
+def LinearDiscriminantAnalysis(*data):
     '''
     测试 LinearDiscriminantAnalysis 的用法
 
@@ -69,7 +70,7 @@ def run_plot_LDA():
     lda.fit(X, Y)
     converted_X=np.dot(X,np.transpose(lda.coef_))+lda.intercept_
     plot_LDA(converted_X,Y)
-def test_LinearDiscriminantAnalysis_solver(*data):
+def LinearDiscriminantAnalysis_solver(*data):
     '''
     测试 LinearDiscriminantAnalysis 的预测性能随 solver 参数的影响
 
@@ -86,7 +87,7 @@ def test_LinearDiscriminantAnalysis_solver(*data):
 			shrinkage=None)
         lda.fit(X_train, y_train)
         print('Score at solver=%s: %.2f' %(solver, lda.score(X_test, y_test)))
-def test_LinearDiscriminantAnalysis_shrinkage(*data):
+def LinearDiscriminantAnalysis_shrinkage(*data):
     '''
     测试  LinearDiscriminantAnalysis 的预测性能随 shrinkage 参数的影响
 
@@ -113,7 +114,7 @@ def test_LinearDiscriminantAnalysis_shrinkage(*data):
 
 if __name__=='__main__':
     X_train,X_test,y_train,y_test=load_data() # 产生用于分类的数据集
-    test_LinearDiscriminantAnalysis(X_train,X_test,y_train,y_test) # 调用 test_LinearDiscriminantAnalysis
-    # run_plot_LDA() # 调用 run_plot_LDA
-    # test_LinearDiscriminantAnalysis_solver(X_train,X_test,y_train,y_test) # 调用 test_LinearDiscriminantAnalysis_solver
-    # test_LinearDiscriminantAnalysis_shrinkage(X_train,X_test,y_train,y_test) # 调用 test_LinearDiscriminantAnalysis_shrinkage
+    LinearDiscriminantAnalysis(X_train,X_test,y_train,y_test) # 调用 LinearDiscriminantAnalysis
+    run_plot_LDA() # 调用 run_plot_LDA
+    LinearDiscriminantAnalysis_solver(X_train,X_test,y_train,y_test) # 调用 LinearDiscriminantAnalysis_solver
+    LinearDiscriminantAnalysis_shrinkage(X_train,X_test,y_train,y_test) # 调用 LinearDiscriminantAnalysis_shrinkage
