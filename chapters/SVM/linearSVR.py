@@ -10,7 +10,7 @@
 """
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn import datasets, linear_model,cross_validation,svm
+from sklearn import datasets, linear_model,model_selection,svm
 def load_data_regression():
     '''
     加载用于回归问题的数据集
@@ -18,7 +18,7 @@ def load_data_regression():
     :return: 一个元组，用于回归问题。元组元素依次为：训练样本集、测试样本集、训练样本集对应的值、测试样本集对应的值
     '''
     diabetes = datasets.load_diabetes() #使用 scikit-learn 自带的一个糖尿病病人的数据集
-    return cross_validation.train_test_split(diabetes.data,diabetes.target,
+    return model_selection.train_test_split(diabetes.data,diabetes.target,
 		test_size=0.25,random_state=0)# 拆分成训练集和测试集，测试集大小为原始数据集大小的 1/4
 
 def test_LinearSVR(*data):

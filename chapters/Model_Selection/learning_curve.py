@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.datasets import load_digits
 from sklearn.svm import LinearSVC
-from sklearn.learning_curve import learning_curve
+from sklearn.model_selection import learning_curve
 
 def test_learning_curve():
     '''

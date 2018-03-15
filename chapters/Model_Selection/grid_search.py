@@ -4,12 +4,9 @@
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     参数优化
-
-    :copyright: (c) 2016 by the huaxz1986.
-    :license: lgpl-3.0, see LICENSE for more details.
 """
 from sklearn.datasets import load_digits
-from sklearn.linear_model import  LogisticRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GridSearchCV,RandomizedSearchCV
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
@@ -74,5 +71,5 @@ def test_RandomizedSearchCV():
     print(classification_report(y_true, y_pred))
 
 if __name__=='__main__':
-    test_GridSearchCV()# 调用 test_GridSearchCV
-    # test_RandomizedSearchCV() # 调用 test_RandomizedSearchCV
+    # test_GridSearchCV()# 调用 test_GridSearchCV
+    test_RandomizedSearchCV() # 调用 test_RandomizedSearchCV

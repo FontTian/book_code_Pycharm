@@ -10,7 +10,7 @@
 """
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn import datasets, linear_model,cross_validation,svm
+from sklearn import datasets, linear_model,model_selection,svm
 def load_data_regression():
     '''
     加载用于回归问题的数据集
@@ -18,7 +18,7 @@ def load_data_regression():
     :return: 一个元组，用于回归问题。元组元素依次为：训练样本集、测试样本集、训练样本集对应的值、测试样本集对应的值
     '''
     diabetes = datasets.load_diabetes()
-    return cross_validation.train_test_split(diabetes.data,diabetes.target,
+    return model_selection.train_test_split(diabetes.data,diabetes.target,
 		test_size=0.25,random_state=0)
 
 def test_SVR_linear(*data):
@@ -173,6 +173,6 @@ def test_SVR_sigmoid(*data):
 if __name__=="__main__":
     X_train,X_test,y_train,y_test=load_data_regression() # 生成用于回归问题的数据集
     test_SVR_linear(X_train,X_test,y_train,y_test) # 调用 test_SVR_linear
-    # test_SVR_poly(X_train,X_test,y_train,y_test) # 调用 test_SVR_poly
-    # test_SVR_rbf(X_train,X_test,y_train,y_test) # 调用 test_SVR_rbf
-    # test_SVR_sigmoid(X_train,X_test,y_train,y_test) # 调用 test_SVR_sigmod
+    test_SVR_poly(X_train,X_test,y_train,y_test) # 调用 test_SVR_poly
+    test_SVR_rbf(X_train,X_test,y_train,y_test) # 调用 test_SVR_rbf
+    test_SVR_sigmoid(X_train,X_test,y_train,y_test) # 调用 test_SVR_sigmod

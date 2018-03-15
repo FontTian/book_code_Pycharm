@@ -11,7 +11,7 @@
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import  datasets
-from sklearn import cross_validation
+from sklearn import model_selection
 import matplotlib.pyplot as plt
 def load_data():
     '''
@@ -22,7 +22,7 @@ def load_data():
     iris=datasets.load_iris() # scikit-learn 自带的 iris 数据集
     X_train=iris.data
     y_train=iris.target
-    return cross_validation.train_test_split(X_train, y_train,test_size=0.25,
+    return model_selection.train_test_split(X_train, y_train,test_size=0.25,
 		random_state=0,stratify=y_train)# 分层采样拆分成训练集和测试集，测试集大小为原始数据集大小的 1/4
 def test_DecisionTreeClassifier(*data):
     '''

@@ -10,21 +10,23 @@
 """
 from sklearn.decomposition import DictionaryLearning
 
-def test_DictionaryLearning():
+
+def test_DictionaryLearning(n_components):
     '''
     测试 DictionaryLearning 的用法
 
     :return: None
     '''
-    X=[[1,2,3,4,5],
-       [6,7,8,9,10],
-       [10,9,8,7,6,],
-       [5,4,3,2,1] ]
-    print("before transform:",X)
-    dct=DictionaryLearning(n_components=3)
+    X = [[1, 2, 3, 4, 5],
+         [6, 7, 8, 9, 10],
+         [10, 9, 8, 7, 6],
+         [5, 4, 3, 2, 1]]
+    print("before transform:", X)
+    dct = DictionaryLearning(n_components=n_components)
     dct.fit(X)
-    print("components is :",dct.components_)
-    print("after transform:",dct.transform(X))
+    print("components is :", dct.components_)
+    print("after transform:", dct.transform(X))
 
-if __name__=='__main__':
-    test_DictionaryLearning() # 调用 test_DictionaryLearning
+
+if __name__ == '__main__':
+    test_DictionaryLearning(n_components=5)  # 调用 test_DictionaryLearning

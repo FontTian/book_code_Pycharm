@@ -40,4 +40,4 @@ def test_log_loss():
 
 if __name__=="__main__":
     test_zero_one_loss() # 调用 test_zero_one_loss
-    # test_log_loss() # 调用 test_log_loss
+    test_log_loss() # 调用 test_log_loss

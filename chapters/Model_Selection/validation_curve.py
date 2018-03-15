@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.datasets import load_digits
 from sklearn.svm import LinearSVC
-from sklearn.learning_curve import validation_curve
+from sklearn.model_selection import validation_curve
 
 def test_validation_curve():
     '''
